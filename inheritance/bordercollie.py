@@ -4,7 +4,7 @@ from dog import Dog
 # drinks_water()
 # pees_itself()
 
-# Multese-poodle
+# Maltese-poodle
 # zoomies()
 
 class BorderCollie(Dog):

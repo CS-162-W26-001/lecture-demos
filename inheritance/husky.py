@@ -7,6 +7,9 @@ class Husky(Dog):
     def __init__(self, name: str, energy_level: int) -> None:
         super().__init__(name)
         self._energy_level = energy_level
+
+    def bark(self) -> None:
+        print("whine")
     
     def pull_sled(self, sled: Sled) -> None:
         if self._energy_level <= 0:
