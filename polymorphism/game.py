@@ -1,6 +1,10 @@
 from player import Player
 from enemy import Enemy
 from vampire import Vampire
+from banshee import Banshee
+from zombie import Zombie
+
+import random
 
 """
 1. player
@@ -15,9 +19,16 @@ from vampire import Vampire
 """
 
 def play_game(player: Player, enemies: list[Enemy]) -> None:
+
+    random.shuffle(enemies)
+
+    for enemy in enemies:
+        print(enemy.get_symbol(), end = " ")
+    print()
+
     # play the game in a loop
     turn_count = 0
-    while turn_count < 10:
+    while player.get_hp() > 0:
         # enemies attack player
         for enemy in enemies:
             enemy.encounter(player)
@@ -31,10 +42,15 @@ def main() -> None:
     # initialize game elements
     player = Player()
 
-    enemies = []
-    for i in range(5):
-        enemies.append(Enemy(15, "E"))
-    enemies.append(Vampire())
+    enemies: list[Enemy] = []
+    for i in range(3):
+        enemies.append(Vampire())
+    
+    for i in range(3):
+        enemies.append(Banshee())
+
+    for i in range(3):
+        enemies.append(Zombie())
 
     play_game(player, enemies)
 

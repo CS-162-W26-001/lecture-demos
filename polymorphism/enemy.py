@@ -1,4 +1,5 @@
 from player import Player
+from abc import abstractmethod
 
 class Enemy:
     _hp: int
@@ -8,8 +9,9 @@ class Enemy:
         self._hp = hp
         self._sprite = sprite
     
+    @abstractmethod
     def encounter(self, player: Player) -> None:
-        player.take_damage(1)
+        pass
 
     def get_symbol(self) -> str:
         return self._sprite
