@@ -1,7 +1,7 @@
 from player import Player
-from abc import abstractmethod
+from abc import abstractmethod, ABC
 
-class Enemy:
+class Enemy(ABC):
     _hp: int
     _sprite: str
 

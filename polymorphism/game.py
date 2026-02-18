@@ -40,7 +40,6 @@ def play_game(player: Player, enemies: list[Enemy]) -> None:
 
 def main() -> None:
     # initialize game elements
-    player = Player()
 
     enemies: list[Enemy] = []
     for i in range(3):
@@ -52,7 +51,14 @@ def main() -> None:
     for i in range(3):
         enemies.append(Zombie())
 
-    play_game(player, enemies)
+    while True:
+        player = Player()
+        play_game(player, enemies)
+        play_again = input("Play again? [yes/no]")
+        if play_again == "yes":
+            continue
+        else:
+            break
 
 if __name__ == "__main__":
     main()
