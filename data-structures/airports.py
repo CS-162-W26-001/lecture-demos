@@ -50,6 +50,8 @@ def main() -> None:
             'state': airport[-3],
         }
     print(airports_by_code['LAX'])
+    print(airports_by_code['SEA'])
+    print(airports_by_code['YYZ'])
 
 if __name__ == "__main__":
     main()
