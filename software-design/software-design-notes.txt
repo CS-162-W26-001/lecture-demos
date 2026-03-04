@@ -1,0 +1,76 @@
+1. Software design is the practice of creating software models
+2. Requirements that you need to translate into code
+    a. Figure out what low-level details will look like
+    b. Figure out how low-level details combine to solve the high-level goal
+3. Software design helps you work with a team
+
+Top-down design
+- model our code with lower effor than writing actual code
+- low-medium fidelity to actual code
+- design is a kind of brainstorming
+- want to know what the low-level details will entail
+- Pseudocode
+    - English representation of code
+    - Language-agnostic 
+    - Example:
+        if x is less than 0 then:
+             raise an error
+        otherwise:
+            print out x to the console
+- drawing diagrams
+    - diagrams can be at any level of detail
+    - Unified Markup Language (UML)
+
+- Pseudocode for top-down design:
+- 3-5 subcomponents
+    - figure out how those subcomponents work together
+    - for each subcompnent, break it further
+    - continue doing this until we end up with small components that can't be broken down further
+    - start from what we know: the requirements
+
+- Example:
+- Difference between two dates. 
+- Assume we have D1 and D2, how many days are between them?
+    - Example 1: D1=March 4, 2026 D2=March 8, 2026, = 4 days
+    - Example 2: D1=March 4, 2026 D2=March 10, 3000 = ???
+- Scope & assumptions:
+    - only work with Days > year 0 (no BCE)
+    - D1 <= D2
+
+if D1 and D2 are in the same year:
+    return difference_between_days_in_the_same_year(D1, D2)
+otherwise:
+    assume D1 < D2
+    difference = difference_between_days_in_the_same_year(D1, Dec 31)
+    difference += 1
+    for each year between D1 and D2:
+        difference += days_in_year(year)
+    difference += difference_between_days_in_the_same_year(Jan 1, D2)
+return difference
+
+-> how do we account for leap years?
+-> we don't return a value -- what does our function return?
+-> 
+
+Pseudocode for days_in_year(year):
+- scope and assumptions:
+    - assumptions year > 0
+- needs to take into account leap years
+
+days_in_year(year):
+    if is_leap_year(year):
+        return 366
+    otherwise:
+        return 365
+
+- new subcomponent: is_leap_year()
+
+is_leap_year(year):
+    if year is divisible 4:
+        if year is divisible 100 and year is not divisible by 400:
+            return false
+        otherwise:
+            return true
+    otherwise:
+        return false
+
