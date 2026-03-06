@@ -50,7 +50,6 @@ return difference
 
 -> how do we account for leap years?
 -> we don't return a value -- what does our function return?
--> 
 
 Pseudocode for days_in_year(year):
 - scope and assumptions:
@@ -74,3 +73,29 @@ is_leap_year(year):
     otherwise:
         return false
 
+- Calculating the difference between days in the same year
+    1. if the days are in the same month, then we return number of days between D2 and D1
+    2. Otherwise, calculate the number of days left in D1's month
+    3. Add 1 to get the first of the next month
+    4. Then sum the number of days of each month between D1 and D2
+    5. Then add the number of days from day 1 to day of month for D2 
+
+days_between_dates_in_the_same_year(D1, D2):
+    if D1 and D2 are the same month:
+        return D2's day - D1's day
+    otherwise:
+        number_of_days = days_in_month(D1 month) - D1's day
+        number_of_days = days_left_in_month + 1
+        for each month between D2 and D1:
+            number_of_days += days_in_month(month)
+        number_of_days += D2's day
+
+days_in_month(month, year):
+    if month is April, June, Sept, Nov:
+        return 30
+    otherwise if month is Feb and is_leap_year(year):
+        return 29
+    otherwise if month is Feb:
+        return 28
+    otherwise:
+        return 31
