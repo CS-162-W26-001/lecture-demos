@@ -38,7 +38,7 @@ def binary_search(array: list[int], search_value: int) -> bool:
 
     # some kind of while loop
     while start <= end:
-        mid = (end + start) // 2
+        mid = start + (end - start) // 2
         print(mid)
         if array[mid] == search_value:
             return True
